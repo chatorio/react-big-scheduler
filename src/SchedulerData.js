@@ -895,7 +895,7 @@ export default class SchedulerData {
                     if (headerEnd > eventStart && headerStart < eventEnd) {
                         header.count = header.count + 1;
                         // if(header.count > resourceEvents.rowMaxCount) {
-                        const eventCount = events.filter(event => event.resourceId === resourceEvents.slotId)
+                        const eventCount = this.events.filter(event => event.resourceId === resourceEvents.slotId)
                         resourceEvents.rowMaxCount = eventCount.length;
                         let rowsCount = (cellMaxEventsCount <= cellMaxEventsCountValue && resourceEvents.rowMaxCount > cellMaxEventsCount) ? cellMaxEventsCount : resourceEvents.rowMaxCount;
                         let newRowHeight = rowsCount * this.config.eventItemLineHeight + (this.config.creatable && this.config.checkConflict === false ? 20 : 2);
