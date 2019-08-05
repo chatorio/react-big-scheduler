@@ -878,6 +878,13 @@ export default class SchedulerData {
                 let resourceEvents = resourceEventsList[0];
                 let span = this._getSpan(item.start, item.end, this.headers);
                 let eventStart = this.localeMoment(item.start), eventEnd = this.localeMoment(item.end);
+                
+                // TODO: Keep track of resources when assigning position.  The
+                // current logic only works when the events provided are sorted
+                // by resource. In other words, all the events for a resource
+                // need to be grouped together. We should be able to handle
+                // events in any random order.
+
                 if (typeof reId === "undefined") {
                     pos = 0;
                     t = 0;
