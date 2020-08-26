@@ -2,6 +2,7 @@ import { DropTarget } from 'react-dnd'
 import {getPos} from './Util'
 import {DnDTypes} from './DnDTypes'
 import {CellUnits, DATETIME_FORMAT} from './index'
+import {ViewTypes} from './ViewTypes'
 
 export default class DnDContext {
     constructor(sources, DecoratedComponent) {
@@ -64,6 +65,9 @@ export default class DnDContext {
                 }
                 const point = monitor.getClientOffset();                
                 let leftIndex = Math.floor((point.x - pos.x)/cellWidth);
+                if(!resourceEvents.headerItems[leftIndex]) {
+                    return;
+                }
                 let newStart = resourceEvents.headerItems[leftIndex].start;
                 let newEnd = resourceEvents.headerItems[leftIndex].end;
                 if(cellUnit !== CellUnits.Hour)
